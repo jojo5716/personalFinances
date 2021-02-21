@@ -1,11 +1,17 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import BasePage from '../Base';
-import Card from '../../components/Card';
+import BasePage from '../../Base';
+import Card from '../../../components/Card';
 
 
 export default class Accounts extends BasePage {
+    constructor(props) {
+        super(props);
+
+        this.props.fetchAccounts();
+    }
+
     renderAccount(props) {
         return (
            <Card {...props}/>

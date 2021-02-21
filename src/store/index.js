@@ -5,7 +5,7 @@ import rootReducer from './reducers';
 
 const initialState = {};
 
-const configureStore = () => {
+export default () => {
     const sagaMiddleware = createSagaMiddleware({});
     const store = createStore(
         rootReducer,
@@ -18,5 +18,3 @@ const configureStore = () => {
 
     return store;
 };
-
-export default configureStore;

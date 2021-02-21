@@ -2,10 +2,9 @@ import {
     fork,
     all,
     take,
-    takeEvery,
 } from 'redux-saga/effects';
 
-import { GET_ACCOUNTS } from '../../constants/actions';
+import actions  from '../../constants/actions';
 
 
 export default function* root() {
@@ -14,12 +13,8 @@ export default function* root() {
     ]);
 }
 
-/* export function* watcher() {
-    yield takeEvery(GET_ACCOUNTS, fetchAccounts);
-}
- */
 export function* fetchAccounts() {
-    yield take(GET_ACCOUNTS);
+    yield take(actions.GET_ACCOUNTS);
 
     console.log('Fetching accounts...');
 }

@@ -1,7 +1,11 @@
-import { GET_ACCOUNTS } from '../../constants/actions';
+import actions from '../../constants/actions';
 
 
-export const fetchAccounts = () => ({
-    type: GET_ACCOUNTS,
+const fetchAccounts = () => ({
+    type: actions.GET_ACCOUNTS,
     payload: {},
 });
+
+export default {
+    fetchAccounts,
+}

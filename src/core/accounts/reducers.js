@@ -1,4 +1,4 @@
-import { GET_ACCOUNTS } from '../../constants/actions';
+import actions from '../../constants/actions';
 import reducerHelper from '../../helpers/reducers';
 
 
@@ -10,7 +10,7 @@ const initialState = {
 };
 
 const reducerMap = [
-    GET_ACCOUNTS,
+    actions.GET_ACCOUNTS,
 ];
 
 export default (state = initialState, action) => {
