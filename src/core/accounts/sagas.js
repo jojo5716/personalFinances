@@ -1,11 +1,13 @@
 import {
-    fork,
     all,
+    fork,
+    put,
     take,
     takeEvery,
 } from 'redux-saga/effects';
 
 import actions  from '../../constants/actions';
+import api from '../../api';
 
 
 export default function* root() {
@@ -22,5 +24,15 @@ function* watcher() {
 function* fetchAccounts() {
     yield take(actions.GET_ACCOUNTS);
 
-    console.log('Fetching accounts...');
+    const accounts = yield api.getParsedData('accounts')
+
+    yield put({
+        type: actions.SET_ACCOUNTS,
+        payload: {
+            accounts: [
+                ...accounts,
+            ]
+        },
+    });
 }
+

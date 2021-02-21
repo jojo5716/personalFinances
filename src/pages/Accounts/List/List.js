@@ -12,9 +12,9 @@ export default class Accounts extends BasePage {
         this.props.fetchAccounts();
     }
 
-    renderAccount(props) {
+    renderAccount(props, index) {
         return (
-           <Card {...props}/>
+           <Card key={index} {...props}/>
         )
     }
 
@@ -30,9 +30,12 @@ export default class Accounts extends BasePage {
     }
 
     render() {    
+        const accounts = this.props.accounts.map(this.renderAccount);
+        
         return (
             <View style={styles.container}>
             {this.renderCreateAccount()}
+            {accounts}
             </View>
         );
     }

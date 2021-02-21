@@ -4,7 +4,9 @@ import accountActions from '../../../core/accounts/actions';
 import List from './List';
 
 function mapStateToProps(state) {
-    return {};
+    return {
+        accounts: state.accountReducer.accounts,
+    };
 };
 
 const mapActionsToProps = {
