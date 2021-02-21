@@ -1,26 +1,46 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const storeData = async (value) => {
+const setStringValue = async (key, value) => {
     try {
-        await AsyncStorage.setItem('@storage_Key', value)
+      await AsyncStorage.setItem(key, value)
+    } catch(e) {
+      // save error
+      console.error(e);
+    }
+}
+
+const setObjectValue = async (key, value) => {
+    try {
+        await setStringValue(key, JSON.stringify(value));
     } catch (e) {
         // saving error
-        console.error(e)
+        console.error(e);
     }
 }
 
-
-const getData = async () => {
+const getData = async (key, defaultValue = null) => {
     try {
-        const value = await AsyncStorage.getItem('@storage_Key')
-        if (value !== null) {
-            // value previously stored
-        }
+        return await AsyncStorage.getItem(key) || defaultValue;
+       
     } catch (e) {
         // error reading value
+        console.error(e);
     }
 }
+
+const getParsedData = async (key, defaultValue = null) => {
+    try {
+        const value =  await getData(key, defaultValue);
+        
+        return value !== undefined ? JSON.parse(value) : value;
+    } catch (e) {
+        // error reading value
+        console.error(e);
+    }
+}
+
 export default {
-    storeData,
     getData,
+    getParsedData,
+    setObjectValue,
 }
