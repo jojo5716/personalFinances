@@ -3,12 +3,13 @@ import { StyleSheet, View } from 'react-native';
 
 import Form from '../../components/Form';
 import accountForm from '../../forms/accounts';
-import apiStore from '../../api'
+import apiStore from '../../api';
 import BasePage from '../Base';
 
 const FAILED_TITLE_MESSAGE = 'Lo siento, no hemos podido crear la cuenta';
 const FAILED_DESCRIPTION_MESSAGE = 'Tienes que asignarle un nombre a tu cuenta :)';
 const ACCOUNT_STORE_KEY = 'accounts';
+const ACCOUNT_LIST_PATH = 'Accounts';
 
 export default class CreateAccount extends BasePage {
     constructor(props) {
@@ -30,7 +31,9 @@ export default class CreateAccount extends BasePage {
                 { name, description },
             ];
 
-            apiStore.setObjectValue(ACCOUNT_STORE_KEY, newAccounts);
+            await apiStore.setObjectValue(ACCOUNT_STORE_KEY, newAccounts);
+
+            this.redirectTo(ACCOUNT_LIST_PATH);
         }
     }
 

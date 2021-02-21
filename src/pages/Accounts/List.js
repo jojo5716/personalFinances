@@ -6,6 +6,11 @@ import Card from '../../components/Card';
 
 
 export default class Accounts extends BasePage {
+    constructor(props) {
+        super(props);
+        console.log('siiiiiiiii')
+    }
+
     renderAccount(props) {
         return (
            <Card {...props}/>
@@ -23,7 +28,7 @@ export default class Accounts extends BasePage {
         return <Card {...props} onPress={() => this.redirectTo(props.path)}/>
     }
 
-    render() {
+    render() {    
         return (
             <View style={styles.container}>
             {this.renderCreateAccount()}
