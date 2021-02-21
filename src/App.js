@@ -6,6 +6,7 @@ import { Appbar } from 'react-native-paper';
 
 import HomePage from './pages/Home';
 import SettingsPage from './pages/Settings';
+import AccountPage from './pages/Accounts';
 
 
 const Stack = createStackNavigator();
@@ -35,6 +36,11 @@ export default function App() {
 						name='Settings'
 						options={{ title: 'Configuración' }}
 						component={SettingsPage}
+					/>
+					<Stack.Screen
+						name='Accounts'
+						options={{ title: 'Cuentas' }}
+						component={AccountPage}
 					/>
 				</Stack.Navigator>
 			</Global>

@@ -7,6 +7,12 @@ import settingContants from '../constants/settings';
 
 
 export default class Settings extends BasePage {
+    constructor(props) {
+        super(props);
+
+        this.renderItem = this.renderItem.bind(this);
+    }
+
     renderItem({ pathName, path, description, icon }, index) {
         return (
             <List.Item
@@ -33,18 +39,5 @@ const styles = StyleSheet.create({
   container: {
       backgroundColor: '#fff',
       flex: 1,
-},
-containerSurfaces: {
-    flexDirection: 'row',
-    height: 100,
-    width: '100%',
-  },
-  surface: {
-    alignItems: 'center',
-    elevation: 1,
-    height: 80,
-    justifyContent: 'center',
-    padding: 8,
-    width: '50%',
-  },
+    },
 });
