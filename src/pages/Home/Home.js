@@ -11,7 +11,7 @@ import Base from '../Base';
 export default class Home extends Base {
 	constructor(props) {
 		super(props); 
-		// console.log(props)
+
 		this.redirectTo = this.redirectTo.bind(this);
 	}
 

@@ -6,11 +6,6 @@ import Card from '../../components/Card';
 
 
 export default class Accounts extends BasePage {
-    constructor(props) {
-        super(props);
-        console.log('siiiiiiiii')
-    }
-
     renderAccount(props) {
         return (
            <Card {...props}/>

@@ -3,7 +3,6 @@ import createSagaMiddleware, { END } from 'redux-saga';
 
 import rootReducer from './reducers';
 
-console.log(rootReducer)
 const initialState = {};
 
 const configureStore = () => {
