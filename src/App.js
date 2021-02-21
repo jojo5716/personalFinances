@@ -11,30 +11,37 @@ import SettingsPage from './pages/Settings';
 const MORE_ICON = Platform.OS === 'ios' ? 'dots-horizontal' : 'dots-vertical';
 const Stack = createStackNavigator();
 
-export default function App() {
-  return (
-	<View style={styles.container}>      
-		<Appbar.Header>
-			<Appbar.Content title='Title' subtitle={'Subtitle'} />
-			<Appbar.Action icon={MORE_ICON} onPress={() => {}} />
-		</Appbar.Header>
+const Global = function(props) {
+	return (
+		<View style={styles.container}>      
+			<Appbar.Header>
+				<Appbar.Content title='Title' subtitle={'Subtitle'} />
+				<Appbar.Action icon={MORE_ICON} onPress={() => {}} />
+			</Appbar.Header>
+			{props.children}
+		</View>
+	);
+}
 
+export default function App() {
+  	return (
 		<NavigationContainer>
-			<Stack.Navigator initialRouteName="Home">
-			  <Stack.Screen
-				name='Home'
-				options={{ title: 'Inicio' }}
-				component={HomePage}
-			  />
-			  <Stack.Screen
-				name='Settings'
-				options={{ title: 'Configuración' }}
-				component={SettingsPage}
-			  />
-			</Stack.Navigator>
-		  </NavigationContainer>
-	</View>
-  );
+			<Global>
+				<Stack.Navigator initialRouteName="Home">
+						<Stack.Screen
+							name='Home'
+							options={{ title: 'Inicio' }}
+							component={HomePage}
+						/>
+						<Stack.Screen
+							name='Settings'
+							options={{ title: 'Configuración' }}
+							component={SettingsPage}
+						/>
+				</Stack.Navigator>
+			</Global>
+		</NavigationContainer>
+	);
 }
 
 

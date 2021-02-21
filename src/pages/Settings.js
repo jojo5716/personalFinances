@@ -7,9 +7,10 @@ import settingContants from '../constants/settings';
 
 
 export default class Settings extends BasePage {
-    renderItem({ pathName, path, description, icon }) {
+    renderItem({ pathName, path, description, icon }, index) {
         return (
             <List.Item
+                key={index}
                 title={pathName}
                 description={description}
                 left={props => <List.Icon {...props} icon={icon} />}
