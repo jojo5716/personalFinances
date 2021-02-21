@@ -3,7 +3,6 @@ import { Avatar, Card, IconButton } from 'react-native-paper';
 
 
 export default ({title, subtitle='', leftIcon, rightIcon, onPress}) => {
-    console.log(onPress)
     return (
         <Card.Title
             title={title}

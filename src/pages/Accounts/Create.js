@@ -2,9 +2,11 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
 import Form from '../../components/Form';
-import BasePage from '../Base';
 import accountForm from '../../forms/accounts';
+import BasePage from '../Base';
 
+const FAILED_TITLE_MESSAGE = 'Lo siento, no hemos podido crear la cuenta';
+const FAILED_DESCRIPTION_MESSAGE = 'Tienes que asignarle un nombre a tu cuenta :)';
 
 export default class CreateAccount extends BasePage {
     constructor(props) {
@@ -12,9 +14,14 @@ export default class CreateAccount extends BasePage {
 
         this.onSubmit = this.onSubmit.bind(this);
     }
-
-    onSubmit(data) {
-        console.log(data)
+    
+    onSubmit({name, description}) {
+        if(name === '') {
+            this.showAlert(
+                FAILED_TITLE_MESSAGE,
+                FAILED_DESCRIPTION_MESSAGE,
+            );
+        }      
     }
 
     render() {
