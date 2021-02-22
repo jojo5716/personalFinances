@@ -11,10 +11,9 @@ const getInitialState = (fieldKeys) => {
   	return state;
 };
 
-const Form = ({ fields, onSubmit }) => {
+const Form = ({ fields, onSubmit, submitText='Guardar' }) => {
 	const fieldKeys = Object.keys(fields);
 	const [values, setValues] = useState(getInitialState(fieldKeys));
-
 	const onChangeValue = (key, value) => {
 		const newState = { ...values, [key]: value };
 		
@@ -41,7 +40,7 @@ const Form = ({ fields, onSubmit }) => {
 			{fieldsRendered}
 
 			<Button icon="camera" mode="contained" onPress={() => onSubmit(values)}>
-				Guardar
+				{submitText}
 			</Button>
 		</View>
 	)
