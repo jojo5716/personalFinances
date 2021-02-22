@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 
 import BasePage from '../../Base';
 import Card from '../../../components/Card';
+import urlContants from '../../../constants/urls';
 
 
 export default class Accounts extends BasePage {
@@ -26,18 +27,17 @@ export default class Accounts extends BasePage {
 
     renderCreateAccount() {
         const props = {
-            title: 'Create',
+            title: 'Crea una nueva cuenta',
             subtitle: '',
             leftIcon: 'plus',
-            rightIcon: 'more-vert',
-            path: 'CreateAccount'
+            rightIcon: 'plus',
+            path: urlContants.ACCOUNT_CREATE_PATH,
         }
         return <Card {...props} onPress={() => this.redirectTo(props.path)}/>
     }
 
     render() {    
         const accounts = this.props.accounts;
-        console.log(accounts)
         const accountsRendered = accounts ? accounts.map(this.renderAccount) : null;
 
         return (
