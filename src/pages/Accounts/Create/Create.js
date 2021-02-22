@@ -1,15 +1,13 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 
-import Form from '../../components/Form';
-import accountForm from '../../forms/accounts';
-import apiStore from '../../api';
-import BasePage from '../Base';
+import Form from '../../../components/Form';
+import accountForm from '../../../forms/accounts';
+import BasePage from '../../Base';
 
 const FAILED_TITLE_MESSAGE = 'Lo siento, no hemos podido crear la cuenta';
 const FAILED_DESCRIPTION_MESSAGE = 'Tienes que asignarle un nombre a tu cuenta :)';
-const ACCOUNT_STORE_KEY = 'accounts';
-const ACCOUNT_LIST_PATH = 'Accounts';
+
 
 export default class CreateAccount extends BasePage {
     constructor(props) {
@@ -18,22 +16,17 @@ export default class CreateAccount extends BasePage {
         this.onSubmit = this.onSubmit.bind(this);
     }
     
-    async onSubmit({name, description}) {
+    async onSubmit({ name, description }) {
         if(name === '') {
             this.showAlert(
                 FAILED_TITLE_MESSAGE,
                 FAILED_DESCRIPTION_MESSAGE,
             );
         } else {
-            const currentAccounts = await apiStore.getParsedData(ACCOUNT_STORE_KEY, []);
-            const newAccounts = [
-                ...currentAccounts,
-                { name, description },
-            ];
-
-            await apiStore.setObjectValue(ACCOUNT_STORE_KEY, newAccounts);
-
-            this.redirectTo(ACCOUNT_LIST_PATH);
+            this.props.createAccount(
+                { name, description }, 
+                this.props.navigation.navigate,
+            );
         }
     }
 
