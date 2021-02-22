@@ -14,6 +14,16 @@ const CREATE = {
     },
 };
 
+const DETAIL_SALARY = {
+    salary: {
+        label: 'Salario mensual',
+        inputProps: {
+            keyboardType: 'numeric',
+        },
+    },
+};
+
 export default {
     CREATE,
+    DETAIL_SALARY,
 };

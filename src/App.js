@@ -8,6 +8,8 @@ import HomePage from './pages/Home';
 import SettingsPage from './pages/Settings';
 import AccountPage from './pages/Accounts/List';
 import CreateAccount from './pages/Accounts/Create';
+import AccountDetail from './pages/Accounts/Detail';
+
 
 const Stack = createStackNavigator();
 
@@ -46,6 +48,11 @@ export default function App() {
 						name='CreateAccount'
 						options={{ title: 'Crea tu cuenta' }}
 						component={CreateAccount}
+					/>
+					<Stack.Screen
+						name='DetailAccount'
+						options={{ title: 'Crea tu cuenta' }}
+						component={AccountDetail}
 					/>
 				</Stack.Navigator>
 			</Global>

@@ -11,6 +11,7 @@ export default class Accounts extends BasePage {
         super(props);
 
         this.props.fetchAccounts();
+        this.renderAccount = this.renderAccount.bind(this);
     }
 
     renderAccount({name, description}, index) {
@@ -18,6 +19,7 @@ export default class Accounts extends BasePage {
             title: name,
             subtitle: description,
             leftIcon: 'cash',
+            onPress: () => this.redirectTo(urlContants.ACCOUNT_DETAIL_PATH)
         };
 
         return (
