@@ -42,14 +42,12 @@ function* fetchAccounts() {
 
 function* createAccount() {
     const { payload } = yield take(actions.CREATE_ACCOUNT);
-
     const currentAccounts = yield apiStore.getParsedData(storeContants.ACCOUNT_STORE_KEY, []);
     const { name, description, redirectCallback } = payload;
     
     currentAccounts.push({ name, description });
 
     yield apiStore.setObjectValue(storeContants.ACCOUNT_STORE_KEY, currentAccounts);
-
     yield put({
         type: actions.SET_ACCOUNTS,
         payload: {
@@ -58,6 +56,6 @@ function* createAccount() {
             ]
         },
     });
-    
+
     redirectCallback(urlContants.ACCOUNT_LIST_PATH);
 }

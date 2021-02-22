@@ -3,10 +3,7 @@ import reducerHelper from '../../helpers/reducers';
 
 
 const initialState = {
-    accounts: {
-        data: null,
-        error: null,
-    },
+    accounts: [],
 };
 
 const reducerMap = [

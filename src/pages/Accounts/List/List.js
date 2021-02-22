@@ -16,7 +16,9 @@ export default class Accounts extends BasePage {
         const cardProps = {
             title: name,
             subtitle: description,
-        }
+            leftIcon: 'cash',
+        };
+
         return (
            <Card key={index} {...cardProps}/>
         )
@@ -26,7 +28,7 @@ export default class Accounts extends BasePage {
         const props = {
             title: 'Create',
             subtitle: '',
-            leftIcon: 'folder',
+            leftIcon: 'plus',
             rightIcon: 'more-vert',
             path: 'CreateAccount'
         }
@@ -35,6 +37,7 @@ export default class Accounts extends BasePage {
 
     render() {    
         const accounts = this.props.accounts;
+        console.log(accounts)
         const accountsRendered = accounts ? accounts.map(this.renderAccount) : null;
 
         return (
