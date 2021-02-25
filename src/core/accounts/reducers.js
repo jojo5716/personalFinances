@@ -8,6 +8,7 @@ const initialState = {
 
 const reducerMap = [
     actions.SET_ACCOUNTS,
+    actions.SET_SALARY,
 ];
 
 export default (state = initialState, action) => {

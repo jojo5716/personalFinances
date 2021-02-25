@@ -16,6 +16,7 @@ export default function* root() {
     yield all([
         fork(fetchAccounts),
         fork(createAccount),
+        fork(saveSalary),
         fork(watcher),
     ]);
 }
@@ -23,6 +24,7 @@ export default function* root() {
 function* watcher() {
     yield takeEvery(actions.GET_ACCOUNTS, fetchAccounts);
     yield takeEvery(actions.CREATE_ACCOUNT, createAccount);
+    yield takeEvery(actions.SAVE_SALARY, saveSalary);
 }
 
 function* fetchAccounts() {
@@ -58,4 +60,34 @@ function* createAccount() {
     });
 
     redirectCallback(urlContants.ACCOUNT_LIST_PATH);
+}
+
+function* saveSalary() {
+    const { payload } = yield take(actions.SAVE_SALARY);
+    const accountSalaryKeyName = storeContants.ACCOUNT_SALARY_KEY(payload.accountName);
+
+    yield apiStore.setStringValue(accountSalaryKeyName, payload.salary);
+    
+    yield put({
+        type: actions.SET_SALARY,
+        payload: {
+            salary: payload.salary,
+        },
+    });
+
+    payload.redirectCallback(urlContants.ACCOUNT_LIST_PATH);
+}
+
+function* getSalary() {
+    const { payload } = yield take(actions.GET_SALARY);
+    const accountSalaryKeyName = storeContants.ACCOUNT_SALARY_KEY(payload.accountName);
+
+    yield apiStore.getData(accountSalaryKeyName);
+    
+    yield put({
+        type: actions.SET_SALARY,
+        payload: {
+            salary: payload.salary,
+        },
+    });
 }

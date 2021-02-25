@@ -1,38 +1,41 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { Title, Subheading } from 'react-native-paper';
+import { Title, Subheading, List } from 'react-native-paper';
 
-import BasePage from '../../Base';
 import Card from '../../../components/Card';
 import Form from '../../../components/Form';
 import accountForm from '../../../forms/accounts';
 import DismissKeyboard from '../../../components/DismissKeyboard';
+import BasePage from '../../Base';
 
-
-const HEADER_CARD_DATA = {
-    leftIcon: 'star',
-    title: 'Bienvenido a tu cuenta',
-    subtitle: 'Aqui podrás gestionar tu cuenta, especificar un ingreso de dinero, rango de pagos, y más opciones para poder gestionar tus finanzas lo mas preciso posible'
-};
 
 
 export default class AccountDetail extends BasePage {
     constructor(props) {
         super(props);
+        const accountName = props.route?.params?.name || '';
 
-        // this.props.fetchAccounts();
+        this.HEADER_CARD_DATA = {
+            left: props => <List.Icon {...props} icon='star' />,
+            title: `Cuenta ${accountName}`,
+            description: 'Aqui podrás gestionar tu cuenta, especificar un ingreso de dinero, rango de pagos, y más opciones para poder ayudate a establecer tus presupuestos'
+        };
         this.onSubmitSalary = this.onSubmitSalary.bind(this);
     }
 
     onSubmitSalary(payload) {
-        console.log(payload);
+        this.props.saveSalary({ 
+            ...payload, 
+            accountName: this.props.name,
+            redirectCallback: this.props.navigation.navigate
+        });
     }
 
     render() {
         return (
             <DismissKeyboard>
                 <View style={styles.container}>
-                    <Card {...HEADER_CARD_DATA}/>
+                    <List.Item {...this.HEADER_CARD_DATA}/>
                         <View style={styles.title}>
                             <Title>
                                 Especifica un ingreso mensual

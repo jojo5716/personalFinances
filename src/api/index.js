@@ -43,4 +43,5 @@ export default {
     getData,
     getParsedData,
     setObjectValue,
+    setStringValue,
 }

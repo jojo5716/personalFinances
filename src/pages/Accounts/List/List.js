@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
+import { List } from 'react-native-paper';
 
 import BasePage from '../../Base';
 import Card from '../../../components/Card';
@@ -15,27 +16,30 @@ export default class Accounts extends BasePage {
     }
 
     renderAccount({name, description}, index) {
-        const cardProps = {
-            title: name,
+        const accountProps = {
+            key:index,
+            left:props => <List.Icon {...props} icon='cash' />,
             subtitle: description,
-            leftIcon: 'cash',
-            onPress: () => this.redirectTo(urlContants.ACCOUNT_DETAIL_PATH)
+            title: name,
+            onPress: () => this.redirectTo(
+                urlContants.ACCOUNT_DETAIL_PATH,
+                { name },
+            )
         };
-
+        
         return (
-           <Card key={index} {...cardProps}/>
+            <List.Item {...accountProps}/> 
         )
     }
 
     renderCreateAccount() {
-        const props = {
-            title: 'Crea una nueva cuenta',
-            subtitle: '',
-            leftIcon: 'plus',
-            rightIcon: 'plus',
-            path: urlContants.ACCOUNT_CREATE_PATH,
-        }
-        return <Card {...props} onPress={() => this.redirectTo(props.path)}/>
+        return (
+            <List.Item
+                title='Crea una nueva cuenta'
+                left={props => <List.Icon {...props} icon='plus' />}
+                onPress={() => this.redirectTo(urlContants.ACCOUNT_CREATE_PATH)}
+            />  
+        )
     }
 
     render() {    

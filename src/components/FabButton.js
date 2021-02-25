@@ -15,13 +15,18 @@ export default (props) => {
           actions={[
             {
               icon: 'plus',
-              label: 'Agregar gasto',
+              label: 'Ir a configuración',
               onPress: () => props.redirectTo('Settings'),
+            },
+            {
+              icon: 'plus',
+              label: 'Agregar gasto',
+              onPress: () => console.log('Pressed'),
             },
             {
               icon: 'anchor',
               label: 'Agregar ingreso',
-              onPress: () => console.log('Pressed email'),
+              onPress: () => console.log('Pressed'),
             },
           ]}
           onStateChange={onStateChange}

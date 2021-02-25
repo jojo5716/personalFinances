@@ -7,7 +7,7 @@ const mapStateToProps = (state) => ({
     accounts: state.accountReducer.accounts,
 });
 const mapActionsToProps = {
-    fetchAccounts: accountActions.fetchAccounts,
+    saveSalary: accountActions.saveSalary,
 };
 
 export default connect(mapStateToProps, mapActionsToProps)(AccountDetail);
