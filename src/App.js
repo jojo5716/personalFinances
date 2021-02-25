@@ -9,25 +9,15 @@ import SettingsPage from './pages/Settings';
 import AccountPage from './pages/Accounts/List';
 import CreateAccount from './pages/Accounts/Create';
 import AccountDetail from './pages/Accounts/Detail';
+import GlobalPage from './pages/Global';
 
 
 const Stack = createStackNavigator();
 
-const Global = function(props) {
-	return (
-		<View style={styles.container}>      
-			<Appbar.Header>
-				<Appbar.Content title='Febrero' subtitle={'2021'} />
-			</Appbar.Header>
-			{props.children}
-		</View>
-	);
-}
-
 export default function App() {
   	return (
 		<NavigationContainer>
-			<Global>
+			<GlobalPage>
 				<Stack.Navigator initialRouteName="Home">
 					<Stack.Screen
 						name='Home'
@@ -55,7 +45,7 @@ export default function App() {
 						component={AccountDetail}
 					/>
 				</Stack.Navigator>
-			</Global>
+			</GlobalPage>
 		</NavigationContainer>
 	);
 }
