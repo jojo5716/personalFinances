@@ -30,8 +30,7 @@ function* watcher() {
 function* fetchAccounts() {
     yield take(actions.GET_ACCOUNTS);
 
-    const accounts = yield apiStore.getParsedData('accounts')
-
+    const accounts = yield apiStore.getParsedData('accounts', []);
     yield put({
         type: actions.SET_ACCOUNTS,
         payload: {
@@ -46,7 +45,7 @@ function* createAccount() {
     const { payload } = yield take(actions.CREATE_ACCOUNT);
     const currentAccounts = yield apiStore.getParsedData(storeContants.ACCOUNT_STORE_KEY, []);
     const { name, description, redirectCallback } = payload;
-    
+
     currentAccounts.push({ name, description });
 
     yield apiStore.setObjectValue(storeContants.ACCOUNT_STORE_KEY, currentAccounts);
@@ -67,7 +66,7 @@ function* saveSalary() {
     const accountSalaryKeyName = storeContants.ACCOUNT_SALARY_KEY(payload.accountName);
 
     yield apiStore.setStringValue(accountSalaryKeyName, payload.salary);
-    
+
     yield put({
         type: actions.SET_SALARY,
         payload: {
@@ -83,7 +82,7 @@ function* getSalary() {
     const accountSalaryKeyName = storeContants.ACCOUNT_SALARY_KEY(payload.accountName);
 
     yield apiStore.getData(accountSalaryKeyName);
-    
+
     yield put({
         type: actions.SET_SALARY,
         payload: {

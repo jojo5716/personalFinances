@@ -7,7 +7,7 @@ const initialState = {
 };
 
 const reducerMap = [
-    
+    actions.SET_ACCOUNTS,
 ];
 
 export default (state = initialState, action) => {

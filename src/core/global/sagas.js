@@ -29,11 +29,11 @@ function* loadInitialData() {
     yield take(actions.LOAD_INITIAL_DATA);
 
     // const accounts = yield apiStore.getParsedData('accounts');
-    
+
     const currentYear = yield select(globalSelectors.getYear);
     const currentMonth = yield select(globalSelectors.getMonth);
 
-    console.log('currentYear: ', currentYear);
-    console.log('currentMonth: ', currentMonth);
+    // console.log('currentYear: ', currentYear);
+    // console.log('currentMonth: ', currentMonth);
 
 }

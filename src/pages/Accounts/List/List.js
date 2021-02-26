@@ -26,9 +26,9 @@ export default class Accounts extends BasePage {
                 { name },
             )
         };
-        
+
         return (
-            <List.Item {...accountProps}/> 
+            <List.Item {...accountProps}/>
         )
     }
 
@@ -38,11 +38,11 @@ export default class Accounts extends BasePage {
                 title='Crea una nueva cuenta'
                 left={props => <List.Icon {...props} icon='plus' />}
                 onPress={() => this.redirectTo(urlContants.ACCOUNT_CREATE_PATH)}
-            />  
+            />
         )
     }
 
-    render() {    
+    render() {
         const accounts = this.props.accounts;
         const accountsRendered = accounts ? accounts.map(this.renderAccount) : null;
 
@@ -61,4 +61,3 @@ const styles = StyleSheet.create({
         flex: 1,
     },
 });
-  

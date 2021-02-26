@@ -19,23 +19,24 @@ const setObjectValue = async (key, value) => {
     }
 }
 
-const getData = async (key, defaultValue = null) => {
+const getData = async (key) => {
     try {
-        return await AsyncStorage.getItem(key) || defaultValue;
-       
+        return await AsyncStorage.getItem(key);
     } catch (e) {
         // error reading value
-        // console.error(e);
+        console.error(e);
     }
 }
 
-const getParsedData = async (key, defaultValue = null) => {
+const getParsedData = async (key, defaultValue = []) => {
     try {
-        const value =  await getData(key, defaultValue);
-        return value !== undefined ? JSON.parse(value) : value;
+        const value = await getData(key);
+        const existItem = !!value && (typeof value === 'string')
+
+        return existItem ? JSON.parse(value) : defaultValue;
     } catch (e) {
         // error reading value
-        // console.error(e);
+        console.error(e);
     }
 }
 

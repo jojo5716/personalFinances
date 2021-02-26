@@ -3,7 +3,6 @@ function getYear(state) {
 }
 
 function getMonth(state) {
-    console.log(state.globalReducer)
     return state.globalReducer.month;
 }
 
