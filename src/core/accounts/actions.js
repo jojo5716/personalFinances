@@ -8,18 +8,19 @@ const fetchAccounts = () => ({
 
 const createAccount = ({ name, description }, redirectCallback) => ({
     type: actions.CREATE_ACCOUNT,
-    payload: { 
-        name, 
+    payload: {
+        name,
         description,
         redirectCallback
     },
 });
 
-const saveSalary = ({ salary }, redirectCallback) => ({
+const saveSalary = ({ salary, accountName, redirectCallback }) => ({
     type: actions.SAVE_SALARY,
-    payload: { 
+    payload: {
         salary,
-        redirectCallback
+        accountName,
+        redirectCallback,
     },
 });
 

@@ -31,6 +31,7 @@ function* fetchAccounts() {
     yield take(actions.GET_ACCOUNTS);
 
     const accounts = yield apiStore.getParsedData('accounts', []);
+
     yield put({
         type: actions.SET_ACCOUNTS,
         payload: {
@@ -64,8 +65,8 @@ function* createAccount() {
 function* saveSalary() {
     const { payload } = yield take(actions.SAVE_SALARY);
     const accountSalaryKeyName = storeContants.ACCOUNT_SALARY_KEY(payload.accountName);
-
     yield apiStore.setStringValue(accountSalaryKeyName, payload.salary);
+    console.log(payload)
 
     yield put({
         type: actions.SET_SALARY,

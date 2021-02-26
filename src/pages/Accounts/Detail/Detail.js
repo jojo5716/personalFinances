@@ -24,10 +24,12 @@ export default class AccountDetail extends BasePage {
     }
 
     onSubmitSalary(payload) {
-        this.props.saveSalary({ 
-            ...payload, 
-            accountName: this.props.name,
-            redirectCallback: this.props.navigation.navigate
+        const accountName = this.props.route.params.name;
+
+        this.props.saveSalary({
+            ...payload,
+            redirectCallback: this.props.navigation.navigate,
+            accountName,
         });
     }
 
@@ -60,4 +62,3 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     }
 });
-  
